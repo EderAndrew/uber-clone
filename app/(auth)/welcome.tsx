@@ -5,10 +5,13 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Swiper from "react-native-swiper";
 import { onboarding } from "../../constants";
+import { CustomButton } from "@/components/CustomButton";
 
 export default function Onboarding() {
     const swiperRef = useRef<Swiper>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const isLastSlide = activeIndex === onboarding.length - 1;
+
   return (
     <SafeAreaView className="flex h-full items-center justify-between bg-white">
       <TouchableOpacity
@@ -38,6 +41,11 @@ export default function Onboarding() {
                 </View>
             ))}
         </Swiper>
+        <CustomButton
+          title={isLastSlide ? "Get Started" : "Next"}
+          onPress={() => isLastSlide ? router.replace("/(auth)/sign-up") : swiperRef.current?.scrollBy(1)}
+          className="w-11/12 mt-10"
+        />
     </SafeAreaView>
   );
 }
