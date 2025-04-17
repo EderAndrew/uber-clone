@@ -1,10 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Text, SafeAreaView } from "react-native";
+import { Redirect } from "expo-router";
 
 export default function Home() {
-  return (
-    <SafeAreaView>
-      <Text>Home</Text>
-    </SafeAreaView>
-  );
+  return <Redirect href="/(auth)/welcome" />;
 }
